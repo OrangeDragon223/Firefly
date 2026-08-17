@@ -1,2 +1,75 @@
-这里是HTML注入示例，你可以在这个文件中添加自定义的HTML内容
-<a href="https://beian.mps.gov.cn/#/query/webSearch?code=42110002000426" rel="noreferrer" target="_blank">鄂公网安备42110002000426号</a>
+<!-- 备案信息:请将备案号替换为你实际备案的号码 -->
+<style>
+	.beian-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+		color: var(--primary);
+		font-weight: 500;
+		text-decoration: none;
+		position: relative;
+		transition: color 0.25s ease, transform 0.25s ease, filter 0.25s ease;
+	}
+	.beian-link::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -2px;
+		height: 1px;
+		background: currentColor;
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.25s ease;
+	}
+	.beian-link:hover {
+		filter: brightness(1.2);
+		transform: translateY(-1px);
+	}
+	.beian-link:hover::after {
+		transform: scaleX(1);
+	}
+	.beian-link img {
+		transition: transform 0.3s ease;
+	}
+	.beian-link:hover img {
+		transform: rotate(-8deg) scale(1.15);
+	}
+</style>
+<div
+	style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; column-gap: 8px; row-gap: 4px;"
+>
+	<!-- ICP备案(工信部) -->
+	<a
+		class="beian-link"
+		href="https://beian.miit.gov.cn/"
+		target="_blank"
+		rel="noreferrer"
+	>
+		<img
+			src="/beian.png"
+			alt=""
+			width="14"
+			height="14"
+			style="height: 14px; width: 14px; flex-shrink: 0; vertical-align: middle;"
+		/>
+		鄂ICP备2026039017号
+	</a>
+	<span aria-hidden="true" style="color: var(--primary);">·</span>
+	<!-- 公安备案(公安部) -->
+	<a
+		class="beian-link"
+		href="https://beian.mps.gov.cn/#/query/webSearch?code=42110002000426"
+		target="_blank"
+		rel="noreferrer"
+	>
+		<img
+			src="/beian.png"
+			alt=""
+			width="14"
+			height="14"
+			style="height: 14px; width: 14px; flex-shrink: 0; vertical-align: middle;"
+		/>
+		鄂公网安备42110002000426号
+	</a>
+</div>
